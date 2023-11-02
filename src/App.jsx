@@ -5,17 +5,33 @@ import Dashboard from "./pages/Dashboard";
 import ContainerDrawer from "./pages/ContainerDrawer";
 import OptionsAdmin from "./pages/Options/OptionsAdmin";
 import OptionsUser from "./pages/Options/OptionsUser";
+import ActivateUser from "./pages/ActivateUser";
+import PassRecovery from "./pages/PassRecovery";
 
 function App() {
-
   return (
     <Routes>
-      <Route path="/login"
-        element={<Login />}
-        errorElement={<ErrorPage />}>
-      </Route>
 
-      <Route path="/"
+      <Route
+        path="/activate-user/:userId"
+        element={<ActivateUser />}
+        errorElement={<ErrorPage />}
+      ></Route>
+
+      <Route
+        path="/pass-recovery/:userId"
+        element={<PassRecovery />}
+        errorElement={<ErrorPage />}
+      ></Route>
+
+      <Route
+        path="/login"
+        element={<Login />}
+        errorElement={<ErrorPage />}
+      ></Route>
+
+      <Route
+        path="/"
         element={<ContainerDrawer />}
         errorElement={<ErrorPage />}
       >
@@ -23,8 +39,8 @@ function App() {
         <Route path="/optionsAdmin" element={<OptionsAdmin />} />
         <Route path="/optionsUser" element={<OptionsUser />} />
       </Route>
-    </Routes >
-  )
+    </Routes>
+  );
 }
 
 export default App;

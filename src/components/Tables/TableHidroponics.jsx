@@ -44,14 +44,8 @@ export default function TableHydroponics() {
             <DataGrid
                 rows={rows}
                 columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
-                pageSizeOptions={[5]}
+                pageSize={5}
+                autoHeight
             />
         </Box>
     );
