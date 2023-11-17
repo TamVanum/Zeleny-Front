@@ -6,6 +6,7 @@ import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
 import { Link as RouteLink } from 'react-router-dom';
 import { Link } from '@mui/material';
 
@@ -29,7 +30,14 @@ export const mainLinkItems = (
     <Link to={`optionsUser`} component={RouteLink} underline='none' color={'grey'}>
       <ListItemButton>
         <ConfirmationNumberIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
-        Opciones Admin
+        Opciones User
+      </ListItemButton>
+    </Link>
+
+    <Link to={`allUserRequest`} component={RouteLink} underline='none' color={'grey'}>
+      <ListItemButton>
+        <RequestQuoteIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
+        Users Request
       </ListItemButton>
     </Link>
 

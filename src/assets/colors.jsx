@@ -13,15 +13,6 @@ export const neutral = {
   900: '#111927',
 };
 
-export const indigo = {
-  lightest: '#F5F7FF',
-  light: '#EBEEFE',
-  main: '#6366F1',
-  dark: '#4338CA',
-  darkest: '#312E81',
-  contrastText: '#FFFFFF',
-};
-
 export const success = {
   lightest: '#F0FDF9',
   light: '#3FC79A',
@@ -58,79 +49,81 @@ export const error = {
   contrastText: '#FFFFFF',
 };
 
-export const extra ={
-  blue: '#5e72e4',
-  indigo: '#5603ad',
-  purple: '#8965e0',
-  pink: '#f3a4b5',
-  red: '#f5365c',
-  orange: '#fb6340',
-  yellow: '#ffd600',
-  green: '#2dce89',
-  teal: '#11cdef',
-  cyan: '#2bffc6',
-  white: '#fff',
-  gray: '#8898aa',
-  grayDark: '#32325d',
-  light: '#ced4da',
-  lighter: '#e9ecef',
-  primary: '#5e72e4',
-  secondary: '#f4f5f7',
-  success: '#2dce89',
-  info: '#11cdef',
-  warning: '#fb6340',
-  danger: '#f5365c',
-  light: '#adb5bd',
-  dark: '#212529',
-  default: '#172b4d',
-  white: '#fff',
+export const Atheme = {
 
-}
+  primary: 'rgb(30 64 175)',
+  color_secondary: 'rgb(30 58 138)',
+  color_accent: 'rgb(30 175 30)',
 
-
-export const customShadows = {
-  medium: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-}
-
-export const customGradient = {
-  orange : 'linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(242,175,92,1) 0%, rgba(242,224,92,0.5648460067620799) 100%)',
-  green : 'linear-gradient(143deg, rgba(65,217,174,1) 0%, rgba(65,217,189,0.5732493681066176) 100%)',
-  green2 : 'linear-gradient(48deg, rgba(21,186,14,0.7861345221682423) 0%, rgba(21,186,14,0.5732493681066176) 100%);',
-  blue : 'linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(92,172,242,1) 0%, rgba(0,212,255,0.5508404045211834) 100%)',
-  yellow: 'linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(255,212,59,1) 0%, rgba(229,255,59,0.5620448863139005) 100%)',
-  main: '#10B981',
+  text_heading: 'rgb(0 0 0)',
+  text_default: 'rgb(16 16 16)',
+  text_muted: 'rgb(16 16 16 / 66%)',
+  bg_page: 'rgb(255 255 255)',
 }
 
 const colorsTheme = createTheme({
   palette: {
     neutral,
-    indigo,
     success,
     info,
     warning,
     error,
-    extra,
+    background: {
+      default: 'rgb(255 255 255)'
+    }
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif', // Puedes personalizar la fuente según tus preferencias
+    allVariants: {
+      // fontFamily: 'Open Sans, sans-serif',
+    }
   },
-  customGradient,
-  customShadows,
-
   components: {
-    MuiPaper: {
+    MuiButton: {
+      variants:
+        [
+          {
+            props: { variant: "primary" },
+            style: {
+              borderRadius: 100,
+              fontWeight: "bold",
+              fontSize: "1.2rem",
+              paddingTop: "2%",
+              paddingBottom: "2%",
+              px: 3,
+              backgroundColor: 'rgb(30 64 175)',
+              "&:hover": { backgroundColor: 'rgb(30 58 138)' },
+              color: 'rgb(255 255 255)',
+
+            }
+          }
+        ]
+    },
+    MuiTextField: {
       styleOverrides: {
         root: {
-          p: 2,
-          height: "100%",
-          display: 'flex',
-          flexDirection: 'column',
-          borderRadius: 2,
+          '& label.Mui-focused': {
+            color: 'black',
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: 'black',
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: 'black',
+              borderRadius: 15,
+            },
+            '&:hover fieldset': {
+              borderColor: 'black',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'black',
+              borderRadius: 15,
+            },
+          },
         },
       },
-    },
-  },
-  
+    }
+  }
 });
 
 export default colorsTheme;

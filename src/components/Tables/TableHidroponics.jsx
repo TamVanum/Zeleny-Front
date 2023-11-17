@@ -13,12 +13,6 @@ const columns = [
         editable: true,
     },
     {
-        field: 'growthStage',
-        headerName: 'Growth Stage',
-        flex: 2,
-        editable: true,
-    },
-    {
         field: 'action',
         headerName: 'Action',
         flex: 2,
@@ -32,9 +26,9 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, plantName: 'Tomato', growthStage: 'Flowering' },
-    { id: 2, plantName: 'Lettuce', growthStage: 'Vegetative' },
-    { id: 3, plantName: 'Basil', growthStage: 'Harvest' },
+    { id: 1, plantName: 'Lechuga'},
+    { id: 2, plantName: 'Rucula'},
+    { id: 3, plantName: 'Lechuga'},
     // Agrega más filas según tus datos de hidroponía
 ];
 

@@ -13,7 +13,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import logo from "../assets/Oak.webp";
+import logo from "../assets/ZelenyLogo.png";
 import { green } from "@mui/material/colors";
 import { IconButton } from "@mui/material";
 import Copyright from "../components/Copyright";
@@ -22,8 +22,7 @@ import Backdrop from '@mui/material/Backdrop';
 import { useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import Swal from "sweetalert2";
-
-const defaultTheme = createTheme();
+import colorsTheme from "../assets/colors";
 
 export default function Login() {
 
@@ -82,7 +81,7 @@ export default function Login() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={colorsTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -92,7 +91,7 @@ export default function Login() {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://static.vecteezy.com/system/resources/previews/022/712/890/large_2x/sunlight-with-earth-sphere-crystal-or-sustainable-globe-glass-on-green-moss-nature-background-in-ecology-environment-forest-concept-of-tree-conservation-environmental-planet-eco-generat-ai-free-photo.jpg)",
+              "url(https://preview.redd.it/gxs1hn6lua471.jpg?width=1080&crop=smart&auto=webp&s=bdbb0b4263f0cd6a52ead7b905e8f72173053987)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -102,7 +101,8 @@ export default function Login() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
+          {/* sx={{backgroundColor:"black"}} */}
           <Box
             sx={{
               my: 8,
@@ -110,6 +110,7 @@ export default function Login() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+
             }}
           >
             {/* <Typography component="h1" variant="h4" fontFamily={'VT323, monospace'}>
@@ -121,7 +122,6 @@ export default function Login() {
             <Typography
               component="h1"
               variant="h5"
-              fontFamily={"VT323, monospace"}
             >
               Iniciar Sesion
             </Typography>
@@ -141,6 +141,7 @@ export default function Login() {
                 autoComplete="email"
                 autoFocus
               />
+
               <TextField
                 margin="normal"
                 required
@@ -157,29 +158,26 @@ export default function Login() {
                 to={"/"}
                 type="submit"
                 fullWidth
-                variant="contained"
+                variant="primary"
                 sx={{
-                  mt: 3,
-                  mb: 2,
-                  backgroundColor: green[500],
-                  "&:hover": { backgroundColor: green[900] },
-                  fontFamily: "VT323, monospace",
+                  py: 2,
+                  my: 2
                 }}
               >
-                Sign In
+                Iniciar Sesion
               </Button>
               <Grid container>
                 <Grid item xs={12} md={6}>
                   <Link
                     component="button"
-                    variant="body2"
+                    variant="body1"
                     onClick={handleOpenModal} // Abre el modal al hacer clic en el enlace
                   >
                     {"Recuperar contraseña"}
                   </Link>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Link href="#" variant="body2">
+                  <Link href="http://localhost:4321/" variant="body1">
                     {"Tienes una cuenta? Registrate"}
                   </Link>
                 </Grid>
@@ -226,6 +224,7 @@ export default function Login() {
             value={emailForRecovery}
             onChange={handleEmailChange}
           />
+
           <Button
             variant="contained"
             onClick={handlePasswordRecovery}
