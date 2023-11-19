@@ -1,43 +1,46 @@
 import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import ApartmentIcon from '@mui/icons-material/Apartment';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import { Link as RouteLink } from 'react-router-dom';
 import { Link } from '@mui/material';
+
+const linksx = {
+  mr: 3,
+  my: 1,
+  color: "grey",
+}
 
 export const mainLinkItems = (
 
   <nav>
     <Link to={`/`} component={RouteLink} underline='none' color={'grey'}>
       <ListItemButton>
-        <DashboardIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
+        <SpaceDashboardIcon sx={{ ...linksx }} />
         Dashboard
       </ListItemButton>
     </Link>
 
     <Link to={`optionsAdmin`} component={RouteLink} underline='none' color={'grey'}>
       <ListItemButton>
-        <ConfirmationNumberIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
+        <PeopleAltIcon sx={{ ...linksx }} />
         Opciones Admin
       </ListItemButton>
     </Link>
 
     <Link to={`optionsUser`} component={RouteLink} underline='none' color={'grey'}>
       <ListItemButton>
-        <ConfirmationNumberIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
+        <PeopleAltIcon sx={{ ...linksx}} />
         Opciones User
       </ListItemButton>
     </Link>
 
     <Link to={`allUserRequest`} component={RouteLink} underline='none' color={'grey'}>
       <ListItemButton>
-        <RequestQuoteIcon style={{ color: "grey" }} sx={{ mr: 3 }} />
-        Users Request
+        <SwitchAccountIcon sx={{ ...linksx}} />
+        Solicitudes de usuario
       </ListItemButton>
     </Link>
 

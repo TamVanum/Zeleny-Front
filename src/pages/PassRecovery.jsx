@@ -14,8 +14,10 @@ import axiosInstance from '../../axiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-import PasswordField from '../components/PasswordField';
-
+import PasswordField from '../components/PasswordField.jsx';
+import { Grid, IconButton, Paper } from '@mui/material';
+import colorsTheme from '../assets/colors.jsx';
+import logo from "../assets/ZelenyLogo.png";
 
 const defaultTheme = createTheme();
 
@@ -103,54 +105,84 @@ export default function PassRecovery() {
     };
 
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
+        <ThemeProvider theme={colorsTheme}>
+            <Grid container component="main" sx={{ height: "100vh" }}>
                 <CssBaseline />
-                <Box
+                <Grid
+                    item
+                    xs={false}
+                    sm={4}
+                    md={7}
                     sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
+                        backgroundImage:
+                            "url(https://cdn.chinadialogue.net/content/uploads/2022/01/18105302/Vegetal-city-Panorama-cropped.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundColor: (t) =>
+                            t.palette.mode === "light"
+                                ? t.palette.grey[50]
+                                : t.palette.grey[900],
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
                     }}
-                >
-                    <Avatar sx={{ m: 1, mt: 10, bgcolor: green[500] }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Recuperar contraseña
-                    </Typography>
-                    <Box sx={{ mt: 1 }}>
-                        <PasswordField
-                            name={"pass"}
-                            label={"Confirme contraseña"}
-                            value={pass}
-                            onChange={handlePassChange}
-                            autoFocus={true}
-                        />
-                        <PasswordField
-                            name={"passValidation"}
-                            label={"Confirme contraseña"}
-                            value={passValidation}
-                            onChange={handlePassValidationChange}
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{
-                                mt: 3, mb: 2,
-                                backgroundColor: green[500],
-                                "&:hover": { backgroundColor: green[900] },
-                            }}
-                            onClick={handleSubmit}
+                />
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
+                    {/* sx={{backgroundColor:"black"}} */}
+                    <Box
+                        sx={{
+                            my: 8,
+                            mx: 4,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+
+                        }}
+                    >
+
+                        <IconButton>
+                            <img src={logo} alt="" height={400} />
+                        </IconButton>
+                        <Typography
+                            component="h1"
+                            variant="h5"
                         >
-                            Recuperar
-                        </Button>
+                            Recuperar Contraseña
+                        </Typography>
+                        <Box sx={{ mt: 1 }}>
+                            <PasswordField
+                                name={"pass"}
+                                label={"Nueva contraseña"}
+                                value={pass}
+                                onChange={handlePassChange}
+                                autoFocus={true}
+                            />
+                            <PasswordField
+                                name={"passValidation"}
+                                label={"Confirme contraseña"}
+                                value={passValidation}
+                                onChange={handlePassValidationChange}
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{
+                                    mt: 3, mb: 2,
+                                    backgroundColor: green[500],
+                                    "&:hover": { backgroundColor: green[900] },
+                                }}
+                                onClick={handleSubmit}
+                            >
+                                Recuperar
+                            </Button>
+                            <Copyright sx={{ mt: 5 }} />
+                        </Box>
                     </Box>
-                </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
-            </Container>
+                </Grid>
+            </Grid>
         </ThemeProvider>
+
+        //AAA OTRA WEA
+
+
     );
 }

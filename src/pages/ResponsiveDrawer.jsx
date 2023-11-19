@@ -15,11 +15,14 @@ import colorsTheme from '../assets/colors';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import logo from '../assets/ZelenyLogoLetters.png'
+import logo2 from '../assets/ZelenyLogo.png'
 import { mainLinkItems } from '../root';
+import { Avatar, Chip } from '@mui/material';
+import { purple } from '@mui/material/colors';
 
 
 
-const drawerWidth = 280;
+const drawerWidth = 320;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -36,15 +39,35 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 3 }}>
-        <img src={logo} alt="Logo" style={{ width: '50%', height: '50%' }} />
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start', // Alinea los elementos a la izquierda
+        justifyContent: 'flex-end', // Alinea los elementos en la parte inferior
+        height: "200px",
+        backgroundImage: 'url(https://i.redd.it/gxs1hn6lua471.jpg)',
+        backgroundSize: '100%',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        padding: '16px', // Agrega un relleno opcional para separar los elementos del borde
+      }}>
+        <Avatar sx={{ bgcolor: purple[500], width: 56, height: 56, mb: 2 }}>N</Avatar>
+        <Box sx={{ display: 'flex', flexDirection:"row"}}>
+          <Typography variant="body1" color="white" component="h2">
+            Nombre de usuario
+          </Typography>
+          <Chip color="info" label="Plan" sx={{ml:4}} />
+        </Box>
+        <Typography variant="body2" color="white" component="h2">
+          correo@electronico.com
+        </Typography>
       </Box>
       <Divider />
 
 
-        <List>
-          {mainLinkItems}
-        </List>
+      <List>
+        {mainLinkItems}
+      </List>
 
       <Divider />
     </div>
@@ -60,7 +83,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "white",
+          backgroundColor: "rgba(255, 255, 255, 0.765)",
           boxShadow: 'none',
         }}
       >
@@ -70,11 +93,13 @@ function ResponsiveDrawer(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 4, display: { sm: 'none' }, color: "black" }}
+            sx={{ mr: 2, display: { sm: 'none' }, color: "black" }}
           >
             <MenuIcon />
           </IconButton>
-
+          <Box sx={{ width: "100%", display: { xs: 'flex', sm: 'none' }, color: "black", alignItems: 'center', justifyContent: 'center' }}>
+            <img src={logo} alt="Logo" style={{ height: '80px' }} />
+          </Box>
           <IconButton
             onClick={logout}
             variant="h6"
@@ -124,6 +149,10 @@ function ResponsiveDrawer(props) {
               backgroundColor: "inherit",
               color: "black",
               textDecoration: 'none',
+              m: 2,
+              boxShadow: 1,
+              borderRadius: 3,
+              height: "95%"
             }
           }}
           open

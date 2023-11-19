@@ -55,7 +55,7 @@ export default function Chart() {
                 ...theme.typography.body1,
               }}
             >
-              Sales ($)
+              Estado (°)
             </Label>
           </YAxis>
           <Line

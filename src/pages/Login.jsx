@@ -201,7 +201,6 @@ export default function Login() {
             timeout: 500,
           },
         }}
-
       >
         <Box
           sx={{
@@ -209,10 +208,14 @@ export default function Login() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
+            width: "80%", // Por defecto para pantallas pequeñas
+            [colorsTheme.breakpoints.up('md')]: {
+              width: "40%", // Para pantallas medianas y mayores
+            },
             bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
+            borderRadius:3
           }}
         >
           <Typography id="modal-title" variant="h6" component="h2">
@@ -226,12 +229,12 @@ export default function Login() {
           />
 
           <Button
-            variant="contained"
+            variant="primary"
             onClick={handlePasswordRecovery}
             sx={{ width: "100%", mt: 2 }}
 
           >
-            Enviar correo de recuperación
+            Recuperar
           </Button>
         </Box>
       </Modal>

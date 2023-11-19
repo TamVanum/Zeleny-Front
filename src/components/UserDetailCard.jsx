@@ -7,17 +7,26 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { green, red } from '@mui/material/colors';
 import { Link as RouteLink } from 'react-router-dom';
 import { Link } from '@mui/material';
+import { useState } from 'react';
+import { success, theme } from '../assets/colors';
 
 
 
 
-const UserDetailsCard = ({ id ,name, lastname, email, phone, plan, createdAt, isAble }) => {
-    
+const UserDetailsCard = ({ id, name, lastname, email, phone, plan, createdAt, isAble }) => {
+    const [isHovered, setIsHovered] = useState(false);
     const habilitadoColor = isAble ? green[800] : red[800];
 
     return (
-        <Card>
-            <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Card
+            elevation={isHovered ? 4 : 1} // Cambia el elevation cuando está en hover
+            onMouseOver={() => setIsHovered(true)}
+            onMouseOut={() => setIsHovered(false)}
+            sx={{
+                p: 1,
+                borderRadius: 5,
+            }}>
+            <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
                 <Typography variant="h5" component="div">
                     {name} {lastname}
                 </Typography>
@@ -28,10 +37,10 @@ const UserDetailsCard = ({ id ,name, lastname, email, phone, plan, createdAt, is
                 </Link>
             </CardContent>
             <CardContent>
-                <Typography color="text.secondary">Email: {email}</Typography>
-                <Typography color="text.secondary">Teléfono: {phone}</Typography>
-                <Typography color="text.secondary">Plan: {plan}</Typography>
-                <Typography color="text.secondary">Fecha de Creación: {createdAt.toString()}</Typography>
+                <Typography color={theme.text_default}>Email: {email}</Typography>
+                <Typography color={theme.text_default}>Teléfono: {phone}</Typography>
+                <Typography color={theme.text_default}>Plan: {plan}</Typography>
+                <Typography color={theme.text_default}>Fecha de Creación: {createdAt.toString()}</Typography>
                 <Typography color="text.secondary" sx={{ color: habilitadoColor }}>Habilitado: {isAble ? 'Sí' : 'No'}</Typography>
             </CardContent>
         </Card>

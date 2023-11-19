@@ -49,7 +49,7 @@ export const error = {
   contrastText: '#FFFFFF',
 };
 
-export const Atheme = {
+export const theme = {
 
   primary: 'rgb(30 64 175)',
   color_secondary: 'rgb(30 58 138)',
@@ -61,6 +61,18 @@ export const Atheme = {
   bg_page: 'rgb(255 255 255)',
 }
 
+export const defaultStyleGrid = {
+  boxShadow: 2,
+  p: 2,
+  borderRadius: 5,
+
+};  
+
+export const headerAlignProps = {
+  headerAlign: 'center',
+  align: 'center',
+};
+
 const colorsTheme = createTheme({
   palette: {
     neutral,
@@ -68,6 +80,7 @@ const colorsTheme = createTheme({
     info,
     warning,
     error,
+    theme,
     background: {
       default: 'rgb(255 255 255)'
     }
@@ -84,9 +97,11 @@ const colorsTheme = createTheme({
           {
             props: { variant: "primary" },
             style: {
+              //Change the Font Family?
               borderRadius: 100,
-              fontWeight: "bold",
-              fontSize: "1.2rem",
+              fontWeight: 'bold',
+              fontFamily: "'Open Sans', sans-serif", 
+              fontSize: "1rem",
               paddingTop: "2%",
               paddingBottom: "2%",
               px: 3,
@@ -102,27 +117,28 @@ const colorsTheme = createTheme({
       styleOverrides: {
         root: {
           '& label.Mui-focused': {
-            color: 'black',
+            color: 'grey',
           },
           '& .MuiInput-underline:after': {
-            borderBottomColor: 'black',
+            borderBottomColor: 'grey',
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'black',
+              borderColor: 'grey',
               borderRadius: 15,
             },
             '&:hover fieldset': {
-              borderColor: 'black',
+              borderColor: 'grey',
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'black',
+              borderColor: 'grey',
               borderRadius: 15,
             },
           },
         },
       },
-    }
+    },
+    
   }
 });
 

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Container, CssBaseline, Grid, Toolbar, TextField, Select, MenuItem } from '@mui/material';
 import UserDetailsCard from '../components/UserDetailCard';
 import axiosInstance from '../../axiosInstance';
+import { ThemeProvider } from '@emotion/react';
+import colorsTheme from '../assets/colors';
 
 export default function AllUserRequest() {
     const [users, setUsers] = useState([]);
@@ -37,7 +39,7 @@ export default function AllUserRequest() {
             hour: '2-digit',
             minute: '2-digit',
         };
-    
+
         return new Date(date._seconds * 1000)
             .toLocaleString('es-ES', options);
     };
@@ -60,71 +62,65 @@ export default function AllUserRequest() {
     const sortedUsers = filteredUsers.slice().sort((a, b) => {
         // Ordenar de manera descendente (del más reciente al más antiguo)
         return new Date(b.createdAt._seconds * 1000) - new Date(a.createdAt._seconds * 1000);
-      });
+    });
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <Box
-                component="main"
-                sx={{
-                    flexGrow: 1,
-                    overflow: 'auto',
-                    mt: 10
-                }}
-            >
-                <Toolbar>
-                    <Box display={"flex"} flexDirection={"row"} gap={2} width={"100%"}>
-                        <TextField
-                            label="Filtrar por nombre"
-                            variant="outlined"
-                            value={filter}
-                            onChange={handleFilterChange}
-                            fullWidth
-                        />
-                        <Select
-                            labelId="filterState"
-                            id="filterState"
-                            value={urlFilter}
-                            label="Filtro"
-                            onChange={handleChange}
-                            MenuProps={{
-                                PaperProps: {
-                                    style: {
-                                        maxHeight: '200px',
-                                        overflowY: 'auto',
-                                    },
-                                },
-                            }}
-                        >
-                            {filterStateList.map((item, index) => (
-                                <MenuItem key={index} value={item.value}>
-                                    {item.label}
-                                </MenuItem>
+            <ThemeProvider theme={colorsTheme}>
+                <CssBaseline />
+                <Box
+                    component="main"
+                    sx={{
+                        flexGrow: 1,
+                        overflow: 'auto',
+                        mt: 10
+                    }}
+                >
+                    <Toolbar>
+                        <Box display={"flex"} flexDirection={"row"} gap={2} width={"100%"}>
+                            <TextField
+                                label="Filtrar por nombre"
+                                variant="outlined"
+                                value={filter}
+                                onChange={handleFilterChange}
+                                fullWidth
+                            />
+                            <Select
+                                labelId="filterState"
+                                id="filterState"
+                                value={urlFilter}
+                                label="Filtro"
+                                onChange={handleChange}
+                            >
+                                {filterStateList.map((item, index) => (
+                                    <MenuItem key={index} value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Box>
+                    </Toolbar>
+                    <Container maxWidth="xl" sx={{ mt: 2, mb: 4 }}>
+                        <Grid container spacing={3}>
+                            {sortedUsers.map((user) => (
+                                <Grid item key={user.id} xs={12} sm={6} md={3}>
+                                    <UserDetailsCard
+                                        id={user.id}
+                                        name={user.name}
+                                        lastname={user.lastname}
+                                        email={user.email}
+                                        phone={user.phone}
+                                        plan={user.plan}
+                                        createdAt={formatDate(user.createdAt)}
+                                        isAble={user.isAble}
+                                    />
+                                    {console.log(formatDate(user.createdAt))}
+                                </Grid>
                             ))}
-                        </Select>
-                    </Box>
-                </Toolbar>
-                <Container maxWidth="xl" sx={{ mt: 2, mb: 4 }}>
-                    <Grid container spacing={3}>
-                        {sortedUsers.map((user) => (
-                            <Grid item key={user.id} xs={12} sm={6} md={3}>
-                                <UserDetailsCard
-                                    id={user.id}
-                                    name={user.name}
-                                    lastname={user.lastname}
-                                    email={user.email}
-                                    phone={user.phone}
-                                    plan={user.plan}
-                                    createdAt={formatDate(user.createdAt)}
-                                    isAble={user.isAble}
-                                />
-                            {console.log(formatDate(user.createdAt))}
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Container>
-            </Box>
+                        </Grid>
+                    </Container>
+                </Box>
+            </ThemeProvider>
         </Box>
     );
 }

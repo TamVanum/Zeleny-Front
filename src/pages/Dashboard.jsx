@@ -33,7 +33,7 @@ export default function Dashboard() {
                   color={blue[500]}
                   icon={<SensorsIcon />}
                   sx={{ height: '100%', borderRadius: 4 }}
-                  value="data"
+                  value="Activo"
                 />
 
               </Grid>
@@ -45,7 +45,7 @@ export default function Dashboard() {
                   color={cyan[600]}
                   icon={<SensorsIcon />}
                   sx={{ height: '100%', borderRadius: 4 }}
-                  value="data"
+                  value="18.7 °C"
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={4}>
@@ -55,7 +55,7 @@ export default function Dashboard() {
                   color={red[600]}
                   icon={<SensorsIcon />}
                   sx={{ height: '100%', borderRadius: 4 }}
-                  value="data"
+                  value=" 31.3 °C"
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={6}>
@@ -66,7 +66,7 @@ export default function Dashboard() {
                   color={amber[600]}
                   icon={<SensorsIcon />}
                   sx={{ height: '100%', borderRadius: 4 }}
-                  value="data"
+                  value="7.2"
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={6}>
@@ -77,13 +77,13 @@ export default function Dashboard() {
                   color={pink[600]}
                   icon={<SensorsIcon />}
                   sx={{ height: '100%', borderRadius: 4 }}
-                  value="data"
+                  value="800 μS/cm"
                 />
               </Grid>
-              <Grid item xs={12} md={6} lg={6}>
+              <Grid item xs={12} md={12} lg={12}>
                 <Chart />
               </Grid>
-              <Grid item xs={12} md={6} lg={6}>
+              {/* <Grid item xs={12} md={6} lg={6}>
                 <Box
                   sx={{
                     height: "100%",
@@ -106,7 +106,7 @@ export default function Dashboard() {
                     NO VIDEO
                   </Typography>
                 </Box>
-              </Grid>
+              </Grid> */}
             </Grid>
 
           </Container>
