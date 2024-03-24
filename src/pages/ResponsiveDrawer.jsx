@@ -152,7 +152,6 @@ function ResponsiveDrawer(props) {
               m: 2,
               boxShadow: 1,
               borderRadius: 3,
-              height: "95%"
             }
           }}
           open
